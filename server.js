@@ -19,10 +19,10 @@ const fs = require('fs');
 const db = knex({
     client: 'pg',
     connection: {
-        host: 'dpg-cedfmsg2i3mr7lgp18a0-a',
-        user: 'chuksjohnleo',
-        password: 'U2D0yXIk8sXKVrYzqSuTOfSB9MJBH9la',
-        database: 'smartbrain_db_rpxf'
+        host: '',
+        user: '',
+        password: '',
+        database: ''
     }
 });
 
@@ -35,21 +35,6 @@ app.use(express.urlencoded({
     extended: false
   }));
 app.use(cors());
-
-// app.get('/', (req, res) => {
-//   res.end('you can now go back')
-// });
-
-
-app.get('/', (req, res) => {
-  db.select('*').from('users')
-  .then(users=>{
-    console.log(users);
-     // res.json(users)
-  })
-})
-
-
 
 app.post('/signin', (req, res) => {
     const {email , password} = req.body;
@@ -82,10 +67,10 @@ app.get('/profile/:id', (req, res) => {
             console.log(err);
         });
 });
-//'https://chuksjohnleo.github.io/images/favicon.jpg'
+
 app.post('/detect',(req, res)=>{ 
 const imageApp = new Clarifai.App({
-    apiKey: "a74fce54ffa8460a889c19b4e694f414"
+    apiKey: "apikey here"
   });
   imageApp.models.predict(Clarifai.FACE_DETECT_MODEL,req.body.input)
   .then(resp=>{
